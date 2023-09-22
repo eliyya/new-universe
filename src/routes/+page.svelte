@@ -1,59 +1,60 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
 </script>
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="new-universe" content="new universe app" />
 </svelte:head>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+<main>
+	<nav>
+		<ul>
+			<li><a href="#">text1</a></li>
+			<li><a href="#">text1</a></li>
+			<li><a href="#">text1</a></li>
+		</ul>
+	</nav>
 
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+	<div>
+		<div class="texto1">
+			<p>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+				Dolorem alias sint ut sunt fuga dolores aliquam debitis quis
+				excepturi ex, facilis at veritatis perspiciatis sequi nihil
+				voluptate magni rerum! Modi.
+			</p>
+		</div>
+		<div class="texto2">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe,
+				tempore unde dolorum fuga quibusdam labore quidem soluta numquam
+				incidunt ex repudiandae, eaque quod? Ipsa corporis ipsam nam.
+				Exercitationem, illo nulla.
+			</p>
+		</div>
+		<div class="texto3">
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit.
+				Necessitatibus quo veritatis voluptate aliquam omnis cum ducimus
+				perspiciatis, maiores quia possimus fuga. Et quaerat consequatur
+				magnam accusamus in deleniti vel laudantium.
+			</p>
+		</div>
+	</div>
+</main>
 
 <style>
-	section {
+	nav {
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
 		align-items: center;
-		flex: 0.6;
+		background: rgb(215, 123, 10);
 	}
-
-	h1 {
-		width: 100%;
+	ul {
+		display: flex;
+		align-items: center;
+		list-style: none;
 	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	li {
+		margin: 0 10px;
 	}
 </style>
