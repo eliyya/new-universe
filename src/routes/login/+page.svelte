@@ -1,6 +1,9 @@
 <script lang="ts">
     import type { EventHandler } from "svelte/elements";
 
+    
+    
+
     const submit: EventHandler<SubmitEvent, HTMLFormElement> = (e) => {
         const email = e.currentTarget.email.value;
         const password = e.currentTarget.password.value;
@@ -45,19 +48,28 @@
 </main>
 
 <style>
-    body {
+    main {
         margin: 0;
         padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;  
         font-family: sans-serif;
         background: black;
     }
     form {
-        background: aqua;
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
-        height: 100vh;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(22.5px);
+        border-radius: 10px;
+        padding: 2rem;
+
+            
     }
     section {
         display: flex;
@@ -67,9 +79,11 @@
     }
     label {
         position: relative;
-        top: 1.2rem;
-        left: 0.2rem;
+        top: 2rem;
+        left: 0.3rem;
         z-index: 1;
+        color: #CDBFD8;
+        font-size: 1rem;
     }
 
     input {
@@ -77,5 +91,6 @@
         border: 1px solid rgba(255, 255, 255, 0.7);
         background: rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(22.5px);
+        padding: 1rem;
     }
 </style>
