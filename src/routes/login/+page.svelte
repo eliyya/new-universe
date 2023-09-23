@@ -48,6 +48,16 @@
 </main>
 
 <style>
+    :global(body) {
+        margin: 0;
+        padding: 0;
+        background-image: url("/background.jpg") ;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }
+   
     main {
         margin: 0;
         padding: 0;
@@ -57,7 +67,6 @@
         align-items: center;
         min-height: 100vh;  
         font-family: sans-serif;
-        background: black;
     }
     form {
         display: flex;
@@ -69,7 +78,6 @@
         border-radius: 10px;
         padding: 2rem;
 
-            
     }
     section {
         display: flex;
