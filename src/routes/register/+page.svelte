@@ -9,4 +9,9 @@
 <main>register</main>
 
 <style>
+    main {
+        display: flex;
+        
+    }
+
 </style>
