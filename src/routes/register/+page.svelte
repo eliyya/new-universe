@@ -2,16 +2,14 @@
 </script>
 
 <svelte:head>
-    <title>Register</title>
-    <meta name="new-universe" content="new universe app" />
+  <title>Register</title>
+  <meta name="new-universe" content="new universe app" />
 </svelte:head>
 
-<main>register</main>
+<main>
+
+</main>
 
 <style>
-    main {
-        display: flex;
-        
-    }
 
 </style>
