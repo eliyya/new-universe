@@ -1,5 +1,7 @@
 <script lang="ts">
     import type { EventHandler } from "svelte/elements";
+    import  Icons  from "../../lib/images/svelte-welcome.png";
+    
 
     
     
@@ -34,6 +36,7 @@
 <main>
     <form on:submit|preventDefault={submit}>
         <section>
+            <img src={Icons} alt="svelte welcome" />
             <label for="email">email</label>
             <input type="email" name="email" id="email" required />
         </section>
@@ -72,9 +75,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(22.5px);
+        align-items: center;  
         border-radius: 10px;
         padding: 2rem;
 
@@ -85,6 +86,7 @@
         justify-content: center;
         margin: 1rem;
     }
+   
     label {
         position: relative;
         top: 2rem;
@@ -100,5 +102,12 @@
         background: rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(22.5px);
         padding: 1rem;
+        color: #CDBFD8;
     }
+   img{
+         
+         width: 100px;
+         height: 100px;
+         margin-bottom: 1rem;
+   }
 </style>
