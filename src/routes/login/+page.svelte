@@ -1,6 +1,8 @@
+
 <script lang="ts">
   import type { EventHandler } from "svelte/elements"
   import Icons from "../../lib/images/pngwing.com (2).png"
+  import Input from "$lib/compoents/Input.svelte"
 
   const submit: EventHandler<SubmitEvent, HTMLFormElement> = (e) => {
     const email = e.currentTarget.email.value
@@ -32,14 +34,8 @@
 <main>
   <form on:submit|preventDefault={submit}>
     <!-- <img src={Icons} alt="svelte welcome" /> -->
-    <section>
-      <label  for="email">email</label>
-      <input type="email" name="email" id="email" required />
-    </section>
-    <section>
-      <label for="password">password</label>
-      <input type="password" name="password" id="password" required />
-    </section>
+    <Input name='email' label='Email' required type='email' />
+    <Input name='password' label='Password' required type='password' />
     <section>
       <input type="submit" value="Login" />
     </section>
@@ -54,7 +50,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
   }
 
   main {
@@ -75,14 +70,14 @@
     border-radius: 10px;
     padding: 2rem;
   }
-  section {
+  /* section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0.5rem;
   }
-
-  label {
+ 
+  label { 
     position: relative;
     top: 2.3rem;
     left: 0.2rem;
@@ -91,6 +86,7 @@
     font-size: 1rem;
     font-weight: 600;
   }
+  
 
   input {
     border-radius: 10px;
@@ -100,7 +96,7 @@
     padding: 1rem;
     color: #cdbfd8;
     font-size: 1rem;
-  }
+  } */
   img {
     display: flex;
     justify-content: center;
