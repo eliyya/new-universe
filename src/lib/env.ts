@@ -1,0 +1,1 @@
+export const backendUrl = 'https://backend-universe.deno.dev'
