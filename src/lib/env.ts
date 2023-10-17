@@ -1,1 +1,1 @@
-export const backendUrl = 'https://backend-universe.deno.dev'
+export const backendUrl = 'http://localhost:25565'

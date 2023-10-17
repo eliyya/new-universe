@@ -9,37 +9,49 @@
   let error = ''
   let errorTimeour: NodeJS.Timeout
 
-  const submit: EventHandler<SubmitEvent, HTMLFormElement> = (e) => {
+  const submit: EventHandler<SubmitEvent, HTMLFormElement> = async e => {
     const email = e.currentTarget.email.value
     const password = e.currentTarget.password.value
-    fetch(backendUrl + "/auth/authorize", {
+    // obtenemos token
+    const {token, expires} = (await fetch(backendUrl + "/auth/authorize", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user: email, password }),
     })
-      .then((r) => r.json())
-      .then(async (r: {token:string;expires:number}) => {
-        const req = await fetch(backendUrl+'/api/users/@me', {
-          headers: { Authorization: `Bearer ${r.token}` },
-        }).then((r) => r.json() as Promise<{
-          avatar: string | null
-          created_at: string | null
-          displayname: string | null
-          email: string
-          id: string
-          username: string
-        }>).catch((e) => console.log(e))
-        if (req) {
-          session.set({ token: r.token, expires: r.expires, user: req })
-          window.location.href = '/app'
-        }
-        else error = 'Invalid credentials'
-        clearTimeout(errorTimeour)
-        errorTimeour = setTimeout(() => error = '', 30_000)
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+      .then((r) => r.json() as Promise<{token:string;expires:number}>)
+      .catch(e => console.log(e))) ?? {}
+
+    if (!token || !expires) {
+      error = 'Invalid credentials'
+      clearTimeout(errorTimeour)
+      errorTimeour = setTimeout(() => error = '', 30_000)
+      return
+    } 
+
+    const user = await fetch(backendUrl+'/api/users/@me', {
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(re => {
+      return re.json() as Promise<{
+      avatar: string | null
+      created_at: string | null
+      displayname: string | null
+      email: string
+      id: string
+      username: string
+    }>
+    }).catch((e) => console.log(e))
+
+    if (user) {
+      console.log({ token, expires, user })
+      localStorage.setItem('session', JSON.stringify({ token, expires, user }))
+      console.log($session);
+      session.set({ token, expires, user })
+      console.log($session);
+      
+      // console.log('ok');
+      
+      window.location.href = '/app'
+    }
   }
 </script>
 

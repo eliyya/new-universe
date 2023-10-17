@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <svelte:head>
 	<title>Home</title>
 	<meta name="new-universe" content="new universe app" />
@@ -9,9 +6,9 @@
 <main>
 	<nav>
 		<ul>
-			<li><a href="#">text1</a></li>
-			<li><a href="#">text1</a></li>
-			<li><a href="#">text1</a></li>
+			<li><a href="/login">login</a></li>
+			<li><a href="/register">register</a></li>
+			<li><a href="/app">app</a></li>
 		</ul>
 	</nav>
 

@@ -10,6 +10,11 @@
     const email = e.currentTarget.email.value
     const password = e.currentTarget.password.value
     const password2 = e.currentTarget.password2.value
+    if (password !== password2) {
+      error = 'password don\'t match'
+      clearTimeout(errorTimeour)
+      errorTimeour = setTimeout(() => error = '', 30_000)
+    }
     fetch(backendUrl+'/api/users/', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -36,7 +41,7 @@
 </svelte:head>
 
 <main>
-  <form action="">
+  <form on:submit|preventDefault={submit}>
     <Input name="email" label="Email" required type="email" />
     <Input name='password' label='Password' required type='password' />
     <Input name='password2' label='Password' required type='password' />

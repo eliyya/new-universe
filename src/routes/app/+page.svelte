@@ -1,13 +1,37 @@
 <script lang="ts">
-  import { session } from "$lib/stores/session"
+  let session: {
+    user: null | {
+        avatar: string | null
+        created_at: string | null
+        displayname: string | null
+        email: string
+        id: string
+        username: string
+      },
+    token: null | string,
+    expires: null | number,
+} = {
+  expires: null,
+  token: null,
+  user: null
+}
 
-  if (!$session.token) window.location.href = "/login"
+try {
+  session = JSON.parse(localStorage.getItem('session')!)
+} catch (error) {
+  window.location.href = '/login'
+}
+// session.subscribe(s => {
+//   console.log('s', s);
+//   if (!s.token) console.log('no hay');
+//   else ses = s
+// })
 </script>
 
-{#if $session.token}
+{#if session.token}
   <main>
     <header>
-        <input type="text">
+        <input>
         <button>Search</button>
     </header>
 
