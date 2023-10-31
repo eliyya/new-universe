@@ -3,19 +3,21 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		interface Locals {
-			user: {
-				avatar: string | null;
-				created_at: string | null;
-				displayname: string | null;
-				email: string;
-				id: string;
-				username: string;
-			}
+		// interface Locals {}
+		interface PageData {
+			user: User
 		}
-		// interface PageData {}
 		// interface Platform {}
 	}
+}
+
+export type User = {
+	avatar: string | null;
+	created_at: string | null;
+	displayname: string | null;
+	email: string;
+	id: string;
+	username: string;
 }
 
 export {};

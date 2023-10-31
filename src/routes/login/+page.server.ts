@@ -24,8 +24,9 @@ export const actions = {
 			return fail(400, { email, incorrect: true })
 		}
 
-        cookies.set('token', token)
-        if (expires) cookies.set('expires', `${expires}`)
+        cookies.set('token', token, {
+            expires: expires ? new Date(+expires) : undefined
+        })
 
         throw redirect(303, '/app')
     }
