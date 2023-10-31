@@ -1,48 +1,48 @@
 <script lang="ts">
-  let session: {
-    user: null | {
-        avatar: string | null
-        created_at: string | null
-        displayname: string | null
-        email: string
-        id: string
-        username: string
-      },
-    token: null | string,
-    expires: null | number,
-} = {
-  expires: null,
-  token: null,
-  user: null
-}
+  import { session } from "$lib/stores/session";
+  // let session: {
+  //   user: null | {
+  //     avatar: string | null;
+  //     created_at: string | null;
+  //     displayname: string | null;
+  //     email: string;
+  //     id: string;
+  //     username: string;
+  //   };
+  //   token: null | string;
+  //   expires: null | number;
+  // } = {
+  //   expires: null,
+  //   token: null,
+  //   user: null,
+  // };
 
-try {
-  session = JSON.parse(localStorage.getItem('session')!)
-} catch (error) {
-  window.location.href = '/login'
-}
-// session.subscribe(s => {
-//   console.log('s', s);
-//   if (!s.token) console.log('no hay');
-//   else ses = s
-// })
+  try {
+    console.log("rr", $session);
+
+    // session = JSON.parse(localStorage.getItem("session")!);
+  } catch (error) {
+    window.location.href = "/login";
+  }
+  // session.subscribe(s => {
+  //   console.log('s', s);
+  //   if (!s.token) console.log('no hay');
+  //   else ses = s
+  // })
 </script>
 
-{#if session.token}
+{#if $session.token}
   <main>
     <header>
-        <input>
-        <button>Search</button>
+      <input />
+      <button>Search</button>
     </header>
 
     <section>
-        <article class="tarea"></article>
-      
+      <article class="tarea" />
     </section>
 
-    <footer>
-     
-    </footer>
+    <footer />
   </main>
 {/if}
 
@@ -53,7 +53,6 @@ try {
     background-image: url("/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    
   }
   section {
     display: flex;
@@ -72,7 +71,5 @@ try {
     align-items: center;
     justify-content: center;
     height: 9vh;
-   
   }
-  
 </style>
