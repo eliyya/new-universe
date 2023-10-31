@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Input from "$lib/compoents/Input.svelte";
+  import Input from "$lib/components/Input.svelte";
   import type { ActionData } from "./$types";
 
   export let form: ActionData;

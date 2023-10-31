@@ -1,38 +1,7 @@
 <script lang="ts">
-  import Input from "$lib/compoents/Input.svelte"
-  import { backendUrl } from "$lib/env"
-  import type { EventHandler } from "svelte/elements"
-
-  let error = ''
-  let errorTimeour: NodeJS.Timeout
-
-  const submit: EventHandler<SubmitEvent, HTMLFormElement> = (e) => {
-    const email = e.currentTarget.email.value
-    const password = e.currentTarget.password.value
-    const password2 = e.currentTarget.password2.value
-    if (password !== password2) {
-      error = 'password don\'t match'
-      clearTimeout(errorTimeour)
-      errorTimeour = setTimeout(() => error = '', 30_000)
-    }
-    fetch(backendUrl+'/api/users/', {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user: email, password }),
-    })
-      .then(async (r) => {
-        if (r.status === 200) {
-          window.location.href = '/login'
-        } else {
-          error = (await r.json()).message
-          clearTimeout(errorTimeour)
-          errorTimeour = setTimeout(() => error = '', 30_000)
-        }
-      })
-      .catch((e) => {
-        console.log(e)
-      })
-  }
+  import Input from "$lib/components/Input.svelte";
+  import type { ActionData } from "./$types";
+  export let form: ActionData;
 </script>
 
 <svelte:head>
@@ -41,19 +10,21 @@
 </svelte:head>
 
 <main>
-  <form on:submit|preventDefault={submit}>
+  <form method="POST">
+    {#if form?.missing}<p class="error">All the fields are required</p>{/if}
+    {#if form?.match}<p class="error">Passwords don't match!</p>{/if}
     <Input name="email" label="Email" required type="email" />
-    <Input name='password' label='Password' required type='password' />
-    <Input name='password2' label='Password' required type='password' />
-    <section> 
-      <input type="submit" value="Login">
+    <Input name="password" label="Password" required type="password" />
+    <Input name="password2" label="Password" required type="password" />
+    <section>
+      <input type="submit" value="Login" />
     </section>
     <a href="/login">login</a>
   </form>
 </main>
 
 <style>
-  :global(body){
+  :global(body) {
     background-image: url("/background.jpg");
     background-size: cover;
     background-position: center;
@@ -64,19 +35,18 @@
     justify-content: center;
     align-items: center;
   }
-  form{
+  form {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  section{
+  section {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-
-   input[type="submit"] {
+  input[type="submit"] {
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.7);
     background: rgba(255, 255, 255, 0.15);
@@ -89,6 +59,4 @@
   input[type="submit"]:hover {
     background: rgba(255, 255, 255, 0.25);
   }
-   
-
 </style>

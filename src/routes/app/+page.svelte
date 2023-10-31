@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { session } from "$lib/stores/session";
   import type { PageData } from "../$types";
 
   export let data: PageData;
