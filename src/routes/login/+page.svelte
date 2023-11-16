@@ -1,58 +1,8 @@
-
 <script lang="ts">
-  import type { EventHandler } from "svelte/elements"
-  import Icons from "../../lib/images/pngwing.com (2).png"
-  import Input from "$lib/compoents/Input.svelte"
-  import { backendUrl } from "$lib/env"
-  import { session } from "$lib/stores/session"
+  import Input from "$lib/components/Input.svelte";
+  import type { ActionData } from "./$types";
 
-  let error = ''
-  let errorTimeour: NodeJS.Timeout
-
-  const submit: EventHandler<SubmitEvent, HTMLFormElement> = async e => {
-    const email = e.currentTarget.email.value
-    const password = e.currentTarget.password.value
-    // obtenemos token
-    const {token, expires} = (await fetch(backendUrl + "/auth/authorize", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user: email, password }),
-    })
-      .then((r) => r.json() as Promise<{token:string;expires:number}>)
-      .catch(e => console.log(e))) ?? {}
-
-    if (!token || !expires) {
-      error = 'Invalid credentials'
-      clearTimeout(errorTimeour)
-      errorTimeour = setTimeout(() => error = '', 30_000)
-      return
-    } 
-
-    const user = await fetch(backendUrl+'/api/users/@me', {
-      headers: { Authorization: `Bearer ${token}` },
-    }).then(re => {
-      return re.json() as Promise<{
-      avatar: string | null
-      created_at: string | null
-      displayname: string | null
-      email: string
-      id: string
-      username: string
-    }>
-    }).catch((e) => console.log(e))
-
-    if (user) {
-      console.log({ token, expires, user })
-      localStorage.setItem('session', JSON.stringify({ token, expires, user }))
-      console.log($session);
-      session.set({ token, expires, user })
-      console.log($session);
-      
-      // console.log('ok');
-      
-      window.location.href = '/app'
-    }
-  }
+  export let form: ActionData;
 </script>
 
 <svelte:head>
@@ -61,12 +11,17 @@
 </svelte:head>
 
 <main>
-  <form on:submit|preventDefault={submit} >
-    {#if error}
-      <span class="Error" >{error}</span>
-    {/if}
-    <Input name='email' label='Email' required type='email' />
-    <Input name='password' label='Password' required type='password' />
+  <form method="POST">
+    {#if form?.missing}<p class="error">All the fields are required</p>{/if}
+    {#if form?.incorrect}<p class="error">Invalid credentials!</p>{/if}
+    <Input
+      name="email"
+      label="Email"
+      required
+      type="email"
+      value={form?.email ?? ""}
+    />
+    <Input name="password" label="Password" required type="password" />
     <section>
       <input type="submit" value="Login" />
     </section>
@@ -115,12 +70,11 @@
     background: rgba(255, 255, 255, 0.25);
   }
 
-  span {
+  .error {
     color: red;
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
   }
-  
 </style>

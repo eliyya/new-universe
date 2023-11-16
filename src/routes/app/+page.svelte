@@ -1,34 +1,10 @@
 <script lang="ts">
-  let session: {
-    user: null | {
-        avatar: string | null
-        created_at: string | null
-        displayname: string | null
-        email: string
-        id: string
-        username: string
-      },
-    token: null | string,
-    expires: null | number,
-} = {
-  expires: null,
-  token: null,
-  user: null
-}
+  import type { PageData } from "../$types";
 
-try {
-  session = JSON.parse(localStorage.getItem('session')!)
-} catch (error) {
-  window.location.href = '/login'
-}
-// session.subscribe(s => {
-//   console.log('s', s);
-//   if (!s.token) console.log('no hay');
-//   else ses = s
-// })
+  export let data: PageData;
+  console.log(data);
 </script>
 
-{#if session.token}
   <main>
     <header>
         <input class="buscardor--search">
@@ -46,11 +22,8 @@ try {
       
     </section>
 
-    <footer>
-     
-    </footer>
-  </main>
-{/if}
+  <footer />
+</main>
 
 <style>
   :global(body) {
@@ -59,7 +32,6 @@ try {
     background-image: url("/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    
   }
   header {
     display: flex;

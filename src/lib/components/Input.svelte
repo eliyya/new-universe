@@ -1,13 +1,14 @@
-<script lang='ts'>
-    export let type = 'text'
-    export let name: string
-    export let label: string
-    export let required = false
+<script lang="ts">
+  export let type = "text";
+  export let name: string;
+  export let label: string;
+  export let required = false;
+  export let value: FormDataEntryValue = "";
 </script>
 
 <section>
   <label for={name}>{label}</label>
-  <input {type} {name} id={name} {required} placeholder="."/>
+  <input {type} {name} id={name} {required} placeholder="." {value} />
 </section>
 
 <style>
@@ -24,7 +25,7 @@
     top: 0;
     left: 1rem;
     z-index: 1;
-    color: #DEF5F9;
+    color: #def5f9;
     font-size: 1rem;
     font-weight: 600;
     transition: all 0.2s ease-out;
@@ -40,7 +41,7 @@
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(22.5px);
     padding: 1rem;
-    color: #DEF5F9;
+    color: #def5f9;
     font-size: 1rem;
   }
 
