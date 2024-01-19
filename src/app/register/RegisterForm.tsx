@@ -38,20 +38,20 @@ export default function RegisterForm() {
     }
 
     return (
-      <form onSubmit={onSubmit} className="flex flex-col justify-center items-center">
-        <label>
+      <form onSubmit={onSubmit} className="flex flex-col gap-10">
+        <label className="text-black">
           email
-          <input type="email" name="email" />
+          <input type="email" name="email" placeholder="email" className="text-slate-950 w-full h-full  border-transparent border-4 rounded-2xl focus:border-b-slate-950 p-5 focus:outline-none " />
         </label>
-        <label>
+        <label  className="text-black">
           password
-          <input type="password" name="password" />
+          <input type="password" name="password" placeholder="password" className="text-slate-950 w-full h-full  border-transparent border-4 rounded-2xl focus:border-b-slate-950 p-5 focus:outline-none "/>
         </label>
-        <label>
+        <label  className="text-black">
             confirm password
-            <input type="password" name="confirmPassword" />
+            <input type="password" name="confirmPassword" placeholder="confirm password" className="text-slate-950 w-full h-full  border-transparent border-4 rounded-2xl focus:border-b-slate-950 p-5 focus:outline-none "/>
         </label>
-        <button type="submit" disabled={isLoading}>{isLoading ? 'Loading...' : 'Submit'}</button>
+        <button type="submit" disabled={isLoading} className="bg-slate-900 text-white rounded-3xl p-4">{isLoading ? 'Loading...' : 'Submit'}</button>
       </form>
     );
 }

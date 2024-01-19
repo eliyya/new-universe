@@ -40,13 +40,13 @@ export default function LoginForm() {
           type="email"
           placeholder="email"
           name="email"
-          className="text-slate-950 w-full h-full  border-transparent border-4 focus:border-b-slate-950 p-5 focus:outline-none focus:"
+          className="text-slate-950 w-full h-full  border-transparent border-4 rounded-2xl focus:border-b-slate-950 p-5 focus:outline-none "
         />
         <input
           type="password"
           placeholder="password"
           name="password"
-          className="text-slate-950 w-full h-full  border-transparent border-4 focus:border-b-slate-950 p-5 focus:outline-none"
+          className="text-slate-950 w-full h-full  border-transparent border-4 rounded-2xl focus:border-b-slate-950 p-5 focus:outline-none"
         />
         <button
           className="bg-slate-900 text-white rounded-3xl p-4"
