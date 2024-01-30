@@ -1,25 +1,20 @@
 export default function App() {
     return (
         <main className="h-screen">
-            <header className="w-screen flex justify-center p-5">
-                <h1 className="text-black text-3xl flex justify-center">Header</h1>
-            </header>
-            <main className="h-full flex flex-row ">
-                <nav className="basis-16 ">
-                    <ul className=" flex  flex-col justify-items-center justify-center">
-                        <li className="text-black m-2 text-4xl">🏡</li>
-                        <li className="text-black m-2 text-4xl">📓</li>
-                        <li className="text-black m-2 text-4xl">📆</li>
-                        <li className="text-black m-2 text-4xl">🎒</li>
-                    </ul>
-                </nav>
-                <div className="main     basis-[60pc] m-8">
-                    <p className="text-black text-3xl flex justify-center">Main</p>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+            <header className=" m-3 p-1 border-b-2 border-slate-950 flex ">
+                <div className=" flex justify-center items-center">
+                    <span className="material-symbols-outlined">
+                        <span>menu</span>
+                    </span>
+                    <h1 className="flex">
+                        <img src="https://www.gstatic.com/classroom/logo_square_rounded.svg" alt="" className="size-11"/>
+                        <span>Classroom</span><i>d</i>
+
+                    </h1>
                 </div>
-            </main>
-
-
-
+            </header>
         </main>
     )
 }
