@@ -46,3 +46,11 @@ h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
 }
+
+
+
+/* estilos de barras de menu */
+.barrasmenu {
+  @apply  text-2xl m-2 border-slate-950  text-lime-600 bg-lime-300 rounded-3xl  p-4 flex  justify-center items-center;
+
+}
