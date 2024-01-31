@@ -45,6 +45,10 @@ export default function Menu() {
             </nav>
             <div id='extended'
                 className="absolute left-16 flex h-full min-w-16 flex-col items-center gap-2 bg-red-700">
+                    <span>menu</span>
+                    <span>menu</span>
+                    <span>menu</span>
+                    <span>menu</span>
             </div>
             <style jsx>
                 {`

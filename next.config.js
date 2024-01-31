@@ -6,7 +6,14 @@ const nextConfig = {
                 hostname: 'cdn.discordapp.com',
             }
         ]
-    }
+    },
+    redirects: () => [
+        {
+            source: '/app',
+            destination: '/app/calendar',
+            permanent: true
+        }
+    ]
 }
 
 module.exports = nextConfig
