@@ -8,7 +8,7 @@ export default function Menu() {
     return (
         <>
             <div className="min-w-16"></div>
-            <nav className="absolute flex h-full w-16 min-w-16 flex-col items-center gap-2 bg-blue-700 p-2">
+            <nav className="absolute z-20 flex h-full w-16 min-w-16 flex-col items-center gap-2  bg-slate-400 p-2">
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label className='aspect-square'>
                     <MenuIcon sx={{
@@ -44,16 +44,25 @@ export default function Menu() {
                 </a>
             </nav>
             <div id='extended'
-                className="absolute left-16 flex h-full min-w-16 flex-col items-center gap-2 bg-red-700">
-                    <span>menu</span>
-                    <span>menu</span>
-                    <span>menu</span>
-                    <span>menu</span>
+                className="absolute -left-5 z-10 flex h-full min-w-16 flex-col items-center gap-2 bg-slate-400 p-2 pr-4 transition-all duration-500 ease-in-out">
+                <span className='flex h-12 flex-col justify-center'></span>
+                <a href='/app/calendar'
+                    className='flex h-12 flex-col justify-center'>
+                    calendar
+                </a>
+                <a href='/app/todo'
+                    className='flex h-12 flex-col justify-center'>
+                    todo
+                </a>
+                <a href='/app/groups'
+                    className='flex h-12 flex-col justify-center'>
+                    groups
+                </a>
             </div>
             <style jsx>
                 {`
                 nav:has(label > input:checked) + #extended{
-                    min-width: 5rem;
+                    left: 4rem;
                 }
             `}
             </style>

@@ -18,6 +18,6 @@
     "@stylistic/jsx-one-expression-per-line": "error",
     "@stylistic/jsx-max-props-per-line": ["error", { "maximum": 1 }],
     "sort-keys-fix/sort-keys-fix": "warn",
-    "readable-tailwind/sort-classes": "error",
+    "readable-tailwind/sort-classes": "error"
   }
 }
