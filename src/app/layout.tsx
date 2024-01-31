@@ -1,6 +1,16 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import MenuIcon from '@mui/icons-material/Menu';
+import Image from 'next/image'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Roboto } from 'next/font/google'
+import Menu from './Menu';
+
+const roboto = Roboto({
+  weight: ['400', '700'],
+  subsets: ['latin']
+})
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +26,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} h-screen flex`}>
+        {/* <header className="p-1 border-b-2 border-slate-950 border-slroboto.classNamete-950 flex  flex-row">
+        <div className=" flex justify-center items-center">
+                    <MenuIcon />
+                    <h1 className="flex justify-center items-center  h-full w-full">
+                        <Image src="https://cdn.discordapp.com/attachments/991195266235514951/1201739307338182696/tohru.png?ex=65cae9f2&is=65b874f2&hm=cec0f089fde3ba17a9415216148b376961ed76a0428a4640e2a088f73dd7e6c3&" width={40} height={40} alt='logo' />
+                        <span className={`${roboto.className}`}>Classroom</span>
+                        <ArrowForwardIosIcon />
+                        <span className=''>calendario</span>
+                    </h1>
+
+                </div>
+        </header> */}
+        <Menu></Menu>
+        {children}
+      </body>
     </html>
   )
 }
