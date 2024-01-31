@@ -1,3 +1,7 @@
 {
-    "recommendations": ["dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss"]
-}t p
+    "recommendations": [
+        "csstools.postcss",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss"
+    ]
+}
