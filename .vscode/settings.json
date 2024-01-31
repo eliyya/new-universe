@@ -1,4 +1,6 @@
 {
+    "css.customData": [".vscode/tailwind.json"],
     "eslint.format.enable": true,
-    "css.customData": [".vscode/tailwind.json"]
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
 }
