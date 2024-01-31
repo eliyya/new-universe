@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "plugin:jsx-a11y/recommended"],
+  "plugins": ["@stylistic", "sort-keys-fix", "jsx-a11y"],
+  "ignorePatterns": ["functions/", "firebase/"],
+  "rules": {
+    "eqeqeq": "error",
+    "no-console": "error",
+    "no-unused-vars": "warn",
+    "@stylistic/semi": ["error", "always"],
+    "@stylistic/indent": ["error", 2],
+    "@stylistic/quotes": ["error", "double"],
+    "@stylistic/comma-dangle": ["error", "always-multiline"],
+    "@stylistic/no-trailing-spaces": "error",
+    "@stylistic/no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+    "@stylistic/no-multi-spaces": ["error", { "exceptions": { "Property": false } }],
+    "@stylistic/multiline-ternary": ["error", "always-multiline"],
+    "@stylistic/jsx-curly-brace-presence":  ["error", { "props": "never", "children": "never" }],
+    "@stylistic/jsx-one-expression-per-line": "error",
+    "@stylistic/jsx-max-props-per-line": ["error", { "maximum": 1 }],
+    "sort-keys-fix/sort-keys-fix": "warn"
+  }
 }
