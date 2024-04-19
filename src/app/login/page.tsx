@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers'
 import {LoginForm, LoginFormProps} from './LoginForm'
+import { redirect } from 'next/navigation'
 
 export default function LoginPage() {
     const login: LoginFormProps['onSubmit'] = async (email, password) => {
@@ -13,6 +14,7 @@ export default function LoginPage() {
         cookies().set('token', data.token, {
             expires: new Date(data.expires),
         })
+        redirect('/')
         return {error:null}
     }
     return (

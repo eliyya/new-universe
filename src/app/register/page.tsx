@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers'
 import { RegisterForm, RegisterFormProps } from './RegisterForm'
+import { redirect } from 'next/navigation'
 
 export default function RegisterPage() {
     const register: RegisterFormProps['onSubmit'] = async (email, password) => {
@@ -13,6 +14,7 @@ export default function RegisterPage() {
         cookies().set('token', data.token, {
             expires: new Date(data.expires),
         })
+        redirect('/')
         return {error:null}
     }
     return (
