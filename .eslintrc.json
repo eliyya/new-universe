@@ -13,10 +13,6 @@
     "@stylistic/no-trailing-spaces": "error",
     "@stylistic/no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
     "@stylistic/no-multi-spaces": ["error", { "exceptions": { "Property": false } }],
-    "@stylistic/multiline-ternary": ["error", "always-multiline"],
-    "@stylistic/jsx-curly-brace-presence":  ["error", { "props": "never", "children": "never" }],
-    "@stylistic/jsx-one-expression-per-line": "error",
-    "@stylistic/jsx-max-props-per-line": ["error", { "maximum": 1 }],
     "sort-keys-fix/sort-keys-fix": "warn",
     "readable-tailwind/sort-classes": "error"
   }
